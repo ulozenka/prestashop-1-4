@@ -646,7 +646,7 @@ if(!$opc) {
   var form=  document.getElementById("form")
   if(form !== null)  {
   form.onsubmit = function( e ) {
-   if(ulozenkaActive && !pobockaSelected) {
+   if(ulozenkaActive && !pobockaSelected  &&  document.getElementById('id_carrier$id_ulozenka').checked ) {
    e = e || window.event;
        e.preventDefault();
        alert('$warning');
@@ -805,7 +805,7 @@ ULOZENKA;
             if ($id_ulozenka > 0) {
                 $date = date('Y-m-d H:i:s');
                 $sql = 'UPDATE ' . _DB_PREFIX_ . 'ulozenka SET exported=1, date_exp="' . $date . '", id_ulozenka=' . (int) $id_ulozenka . ' WHERE id_order=' . (int) $id;
-                Db::getInstance()->executeS($sql);
+                Db::getInstance()->execute($sql);
             }
         }
         return;
